@@ -20,5 +20,13 @@ Vertex DisjointSet::findSet(Vertex x){
     if (subsets[x].parent != x) {
         return findSet(subsets[x].parent);
     }
-    return x;
+    return subsets[x].parent;
+}
+
+void DisjointSet::unionSets(Vertex x, Vertex y){
+    Vertex rootX = findSet(x);
+    Vertex rootY = findSet(y);
+    if(rootX != rootY){
+        subsets[rootY].parent = rootX;
+    }
 }
