@@ -37,3 +37,16 @@ Graph Graph::sort_edges() const{
     sort(sorted_edge_lst.begin(), sorted_edge_lst.end());
     return sorted_edge_lst; 
 }
+
+VertexList Graph::edges_from(Vertex vertex) const{
+    VertexList lst;
+    for (const Edge& e : *this) {
+        if (e.u == vertex) {
+            lst.push_back(e.v);
+        }
+        else if (e.v == vertex) {
+            lst.push_back(e.u);
+        }
+    }
+    return lst;
+}
