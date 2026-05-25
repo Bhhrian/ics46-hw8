@@ -30,3 +30,10 @@ void DisjointSet::unionSets(Vertex x, Vertex y){
         subsets[rootY].parent = rootX;
     }
 }
+
+//Graph class
+Graph Graph::sort_edges() const{
+    Graph sorted_edge_lst = * this;
+    sort(sorted_edge_lst.begin(), sorted_edge_lst.end());
+    return sorted_edge_lst; 
+}
