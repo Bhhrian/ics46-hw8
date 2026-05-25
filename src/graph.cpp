@@ -15,3 +15,10 @@ DisjointSet::DisjointSet(int numVertices){
 void DisjointSet::makeSet(Vertex x){
     subsets[x].parent = x;
 }
+
+Vertex DisjointSet::findSet(Vertex x){
+    if (subsets[x].parent != x) {
+        return findSet(subsets[x].parent);
+    }
+    return x;
+}
