@@ -50,3 +50,12 @@ VertexList Graph::edges_from(Vertex vertex) const{
     }
     return lst;
 }
+
+
+void file_to_graph(string filename, Graph & G){
+    ifstream inFile(filename);
+    if(!inFile){
+        error("file not open");
+    }
+    inFile >> G;
+}
