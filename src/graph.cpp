@@ -11,3 +11,7 @@ DisjointSet::DisjointSet(int numVertices){
         makeSet(i);
     }
 }
+
+void DisjointSet::makeSet(Vertex x){
+    subsets[x].parent = x;
+}
