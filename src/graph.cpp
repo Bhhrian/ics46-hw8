@@ -125,3 +125,10 @@ EdgeList Kruskals(const Graph& G){
     }
     return MST;
 }
+
+string get_arg(int argc, char *argv[], string def){
+    if (argc > 1){
+        return argv[1];
+    }
+    return def;
+}
