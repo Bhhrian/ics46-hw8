@@ -103,3 +103,12 @@ VertexList dfs(const Graph& graph, Vertex startVertex){
     }
     return result;
 }
+
+//MST: Minimum Spanning Tree
+int sum_weights(EdgeList const& L){
+    int sum = 0;
+    for (const Edge& edge: L){
+        sum += edge.weight;
+    }
+    return sum;
+}
