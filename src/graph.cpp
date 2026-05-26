@@ -81,3 +81,25 @@ VertexList bfs(const Graph& graph, Vertex startVertex){
     }
     return result;
 }
+
+VertexList dfs(const Graph& graph, Vertex startVertex){
+    VertexList result;
+    vector<bool> label(graph.numVertices, false);
+    stack<Vertex> s;
+
+    label[startVertex] = true;
+    s.push(startVertex);
+
+    while(!s.empty()){
+        Vertex v = s.top();
+        s.pop();
+        result.push_back(v);
+        for(Vertex neighbor: graph.edges_from(v)){
+            if(!label[neighbor]){
+                label[neighbor] = true;
+                s.push(neighbor);
+            }
+        }
+    }
+    return result;
+}
