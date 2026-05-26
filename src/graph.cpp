@@ -112,3 +112,16 @@ int sum_weights(EdgeList const& L){
     }
     return sum;
 }
+
+EdgeList Kruskals(const Graph& G){
+    EdgeList MST;
+    Graph sorted = G.sort_edges();
+    DisjointSet ds(G.numVertices);
+    for(const Edge& edge: sorted){
+        if (ds.findSet(edge.u) != ds.findSet(edge.v)){
+            MST.push_back(edge);
+            ds.unionSets(edge.u, edge.v);
+        }
+    }
+    return MST;
+}
