@@ -50,12 +50,9 @@ Graph Graph::sort_edges() const{
 
 VertexList Graph::edges_from(Vertex vertex) const{
     VertexList lst;
-    for (const Edge& e : *this) {
-        if (e.u == vertex) {
+    for (const Edge& e : *this){
+        if (e.u == vertex){
             lst.push_back(e.v);
-        }
-        else if (e.v == vertex) {
-            lst.push_back(e.u);
         }
     }
     return lst;
@@ -105,9 +102,7 @@ VertexList dfs(const Graph& graph, Vertex startVertex){
         s.pop();
         result.push_back(v);
 
-        VertexList neighbors = graph.edges_from(v);
-        for (auto it = neighbors.rbegin(); it != neighbors.rend(); ++it){
-            Vertex neighbor = *it;
+        for(Vertex neighbor : graph.edges_from(v)){
             if(!label[neighbor]){
                 label[neighbor] = true;
                 s.push(neighbor);
