@@ -59,3 +59,25 @@ void file_to_graph(string filename, Graph & G){
     }
     inFile >> G;
 }
+
+VertexList bfs(const Graph& graph, Vertex startVertex){
+    VertexList result;
+    vector<bool> label(graph.numVertices, false);   //make a label vector list for checking
+    queue<Vertex> q;
+
+    label[startVertex] = true;
+    q.push(startVertex);
+
+    while(!q.empty()){
+        Vertex v = q.front();
+        q.pop();
+        result.push_back(v);
+        for (Vertex neighbor : graph.edges_from(v)){
+            if (!label[neighbor]){
+                label[neighbor] = true;
+                q.push(neighbor);
+            }
+        }
+    }
+    return result;
+}
