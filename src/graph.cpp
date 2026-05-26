@@ -104,7 +104,10 @@ VertexList dfs(const Graph& graph, Vertex startVertex){
         Vertex v = s.top();
         s.pop();
         result.push_back(v);
-        for(Vertex neighbor: graph.edges_from(v)){
+
+        VertexList neighbors = graph.edges_from(v);
+        for (auto it = neighbors.rbegin(); it != neighbors.rend(); ++it){
+            Vertex neighbor = *it;
             if(!label[neighbor]){
                 label[neighbor] = true;
                 s.push(neighbor);
