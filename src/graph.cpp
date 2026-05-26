@@ -34,7 +34,17 @@ void DisjointSet::unionSets(Vertex x, Vertex y){
 //Graph class
 Graph Graph::sort_edges() const{
     Graph sorted_edge_lst = * this;
-    sort(sorted_edge_lst.begin(), sorted_edge_lst.end());
+    for (int i = 0; i < sorted_edge_lst.size(); ++i){
+        int minIndex = i;
+        for (int j = i + 1; j < sorted_edge_lst.size(); ++j){
+            if (sorted_edge_lst[j].weight < sorted_edge_lst[minIndex].weight){
+                minIndex = j;
+            }
+        }
+        Edge temp = sorted_edge_lst[i];
+        sorted_edge_lst[i] = sorted_edge_lst[minIndex];
+        sorted_edge_lst[minIndex] = temp;
+    }
     return sorted_edge_lst; 
 }
 
