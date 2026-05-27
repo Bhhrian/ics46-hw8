@@ -39,7 +39,7 @@ bool edge_less(const Edge& a, const Edge& b){
 
 Graph Graph::sort_edges() const{
     Graph sorted_edge_lst = *this;
-    sort(sorted_edge_lst.begin(), sorted_edge_lst.end(), edge_less);
+    stable_sort(sorted_edge_lst.begin(), sorted_edge_lst.end(), edge_less);
     return sorted_edge_lst;
 }
 
