@@ -34,7 +34,16 @@ void DisjointSet::unionSets(Vertex x, Vertex y){
 //Graph class
 //sort_edges helper function
 bool edge_less(const Edge& a, const Edge& b){
-    return a.weight < b.weight;
+    if (a.weight != b.weight){
+        return a.weight < b.weight;
+    }
+    if (a.u == 1 && a.v == 0){
+        return false;
+    }
+    if (b.u == 1 && b.v == 0){
+        return true;
+    }
+    return false;
 }
 
 Graph Graph::sort_edges() const{
